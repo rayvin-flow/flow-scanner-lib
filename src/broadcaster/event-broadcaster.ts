@@ -7,4 +7,6 @@ export type EventBroadcast = {
 
 export interface EventBroadcasterInterface {
   broadcastEvents: (blockHeight: number, events: FlowEvent[]) => Promise<void>
+
+  destroy?: () => Promise<void>
 }

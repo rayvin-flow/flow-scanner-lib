@@ -20,4 +20,11 @@ export class MulticastEventBroadcaster implements EventBroadcasterInterface {
       this.logProvider().error(err)
     }
   }
+
+  destroy = async () => {
+    for (const broadcasterProvider of this.broadcasterProviders) {
+      const broadcaster = await broadcasterProvider()
+      broadcaster.destroy && await broadcaster.destroy()
+    }
+  }
 }

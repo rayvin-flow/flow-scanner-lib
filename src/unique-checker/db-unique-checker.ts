@@ -115,4 +115,11 @@ export class DbUniqueChecker implements UniqueCheckerInterface<SqliteLockData> {
         })
     })
   }
+
+  destroy = async () => {
+    if (this.db) {
+      await this.db.destroy()
+      this.db = undefined
+    }
+  }
 }

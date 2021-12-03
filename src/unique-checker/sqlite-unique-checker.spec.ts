@@ -15,7 +15,7 @@ describe('Test sqlite unique checker', () => {
     expect(check2).not.undefined
     expect(check2).has.property('key', 'test2')
 
-    await checker.closeDb()
+    await checker.destroy()
   })
 
   it('Check that lock is respected', async () => {
@@ -29,7 +29,7 @@ describe('Test sqlite unique checker', () => {
 
     expect(check2).undefined
 
-    await checker.closeDb()
+    await checker.destroy()
   })
 
   it('Check that lock is can be released', async () => {
@@ -49,7 +49,7 @@ describe('Test sqlite unique checker', () => {
 
     expect(lock3).not.undefined
 
-    await checker.closeDb()
+    await checker.destroy()
   })
 
   it('Check consumable', async () => {
@@ -66,7 +66,7 @@ describe('Test sqlite unique checker', () => {
       expect(consumed2).equals(true)
     }
 
-    await checker.closeDb()
+    await checker.destroy()
   })
 
   it('Check that only lock can consume record', async () => {
@@ -91,7 +91,7 @@ describe('Test sqlite unique checker', () => {
       expect(consumed3).equals(true)
     }
 
-    await checker.closeDb()
+    await checker.destroy()
   })
 
   it('Check that lock expires', async () => {
@@ -109,7 +109,7 @@ describe('Test sqlite unique checker', () => {
 
     expect(lock3).not.undefined
 
-    await checker.closeDb()
+    await checker.destroy()
   })
 
   it('Check unique key builder without groupId', async () => {
@@ -117,7 +117,7 @@ describe('Test sqlite unique checker', () => {
     const key = checker.buildKey('test')
     expect(key).equals('test')
 
-    await checker.closeDb()
+    await checker.destroy()
   })
 
   it('Check unique key builder without groupId', async () => {
@@ -125,7 +125,7 @@ describe('Test sqlite unique checker', () => {
     const key = checker.buildKey('test')
     expect(key).equals('test-group')
 
-    await checker.closeDb()
+    await checker.destroy()
   })
 
   it('Check that lock can be acquired with groupId', async () => {
@@ -140,6 +140,6 @@ describe('Test sqlite unique checker', () => {
     expect(check2).not.undefined
     expect(check2).has.property('key', 'test2-group')
 
-    await checker.closeDb()
+    await checker.destroy()
   })
 })

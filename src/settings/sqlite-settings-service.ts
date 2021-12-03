@@ -85,4 +85,11 @@ export class SqliteSettingsService implements SettingsServiceInterface {
     const db = await this.getDb()
     await db.raw("REPLACE INTO settings (`key`, `value`) VALUES (?, ?)", ['processed-block-height', String(blockHeight)])
   }
+
+  destroy = async () => {
+    if (this.db) {
+      await this.db.destroy()
+      this.db = undefined
+    }
+  }
 }

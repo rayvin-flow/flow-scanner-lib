@@ -32,5 +32,10 @@ export class UniqueEventBroadcaster implements EventBroadcasterInterface {
       }
     }
   }
+
+  destroy = async () => {
+    const uniqueChecker = await this.uniqueCheckerProvider()
+    uniqueChecker.destroy && await uniqueChecker.destroy()
+  }
 }
 

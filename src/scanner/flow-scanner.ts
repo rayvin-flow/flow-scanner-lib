@@ -152,6 +152,12 @@ export class FlowScanner {
 
     this.eventScanners = []
 
+    const settings = await this.providers.settingsServiceProvider()
+    settings.destroy && await settings.destroy()
+
+    const eventBroadcaster = await this.providers.eventBroadcasterProvider()
+    eventBroadcaster.destroy && await eventBroadcaster.destroy()
+
     this.running = false
 
     if (this.processTimeout) {

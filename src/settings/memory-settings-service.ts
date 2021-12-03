@@ -13,4 +13,7 @@ export class MemorySettingsService implements SettingsServiceInterface {
   setProcessedBlockHeight = async (blockHeight: number) => {
     this.processedBlockHeight = blockHeight
   }
+
+  destroy = async () => {
+  }
 }

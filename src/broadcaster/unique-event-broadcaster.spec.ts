@@ -87,7 +87,7 @@ describe('Test unique event broadcaster', () => {
 
     expect(consumed).equals(true)
 
-    await checker.closeDb()
+    await checker.destroy()
   })
 
   it('Check that events are only broadcasted once', async () => {
@@ -109,7 +109,7 @@ describe('Test unique event broadcaster', () => {
 
     expect(broadcasted).length(0)
 
-    await checker.closeDb()
+    await checker.destroy()
   })
 
   it('Check that new transactions are broadcasted', async () => {
@@ -153,6 +153,6 @@ describe('Test unique event broadcaster', () => {
 
     expect(broadcasted).length(1)
 
-    await checker.closeDb()
+    await checker.destroy()
   })
 })

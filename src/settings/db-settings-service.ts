@@ -27,6 +27,19 @@ export class DbSettingsService implements SettingsServiceInterface {
 
   setProcessedBlockHeight = async (blockHeight: number) => {
     const db = await this.getDb()
-    await db.raw("REPLACE INTO `" + this.tableName + "` (`key`, `value`) VALUES (?, ?)", ['processed-block-height', String(blockHeight)])
+    await db(this.tableName)
+      .insert({
+        key: 'processed-block-height',
+        value: String(blockHeight),
+      })
+      .onConflict(['key'])
+      .merge()
+  }
+
+  destroy = async () => {
+    if (this.db) {
+      await this.db.destroy()
+      this.db = undefined
+    }
   }
 }

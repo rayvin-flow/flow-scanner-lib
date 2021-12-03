@@ -8,4 +8,6 @@ export interface UniqueCheckerInterface<T> {
   setConsumed (lockData: LockData<T>, consumed: boolean): Promise<void>
 
   releaseLock (lockData: LockData<T>): Promise<void>
+
+  destroy?: () => Promise<void>
 }
