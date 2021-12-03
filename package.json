@@ -1,6 +1,6 @@
 {
   "name": "@rayvin-flow/flow-scanner-lib",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Monitors the Flow blockchain for specific event types",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
